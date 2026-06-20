@@ -1,47 +1,70 @@
-@Override
-public boolean[][] possibleMoves() {
-    boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
-    Position p = new Position(0, 0);
+package chess.pieces;
 
-    // Diagonal superior esquerda
-    p.setValues(position.getRow() - 1, position.getColumn() - 1);
-    while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-        mat[p.getRow()][p.getColumn()] = true;
-        p.setValues(p.getRow() - 1, p.getColumn() - 1);
-    }
-    if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-        mat[p.getRow()][p.getColumn()] = true;
-    }
+import boardgame.Board;
+import boardgame.Position;
+import chess.ChessPiece;
+import chess.Color;
 
-    // Diagonal superior direita
-    p.setValues(position.getRow() - 1, position.getColumn() + 1);
-    while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-        mat[p.getRow()][p.getColumn()] = true;
-        p.setValues(p.getRow() - 1, p.getColumn() + 1);
-    }
-    if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-        mat[p.getRow()][p.getColumn()] = true;
+/**
+ * Representa a peça Bispo no jogo de xadrez.
+ * O bispo se move apenas nas diagonais.
+ */
+public class Bishop extends ChessPiece {
+
+    public Bishop(Board board, Color color) {
+        super(board, color);
     }
 
-    // Diagonal inferior esquerda
-    p.setValues(position.getRow() + 1, position.getColumn() - 1);
-    while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-        mat[p.getRow()][p.getColumn()] = true;
-        p.setValues(p.getRow() + 1, p.getColumn() - 1);
-    }
-    if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-        mat[p.getRow()][p.getColumn()] = true;
+    @Override
+    public String toString() {
+        return "B";
     }
 
-    // Diagonal inferior direita
-    p.setValues(position.getRow() + 1, position.getColumn() + 1);
-    while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-        mat[p.getRow()][p.getColumn()] = true;
-        p.setValues(p.getRow() + 1, p.getColumn() + 1);
-    }
-    if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-        mat[p.getRow()][p.getColumn()] = true;
-    }
+    @Override
+    public boolean[][] possibleMoves() {
+        boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
+        Position p = new Position(0, 0);
 
-    return mat;
+        // Diagonal superior esquerda
+        p.setValues(position.getRow() - 1, position.getColumn() - 1);
+        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+            mat[p.getRow()][p.getColumn()] = true;
+            p.setValues(p.getRow() - 1, p.getColumn() - 1);
+        }
+        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+            mat[p.getRow()][p.getColumn()] = true;
+        }
+
+        // Diagonal superior direita
+        p.setValues(position.getRow() - 1, position.getColumn() + 1);
+        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+            mat[p.getRow()][p.getColumn()] = true;
+            p.setValues(p.getRow() - 1, p.getColumn() + 1);
+        }
+        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+            mat[p.getRow()][p.getColumn()] = true;
+        }
+
+        // Diagonal inferior esquerda
+        p.setValues(position.getRow() + 1, position.getColumn() - 1);
+        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+            mat[p.getRow()][p.getColumn()] = true;
+            p.setValues(p.getRow() + 1, p.getColumn() - 1);
+        }
+        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+            mat[p.getRow()][p.getColumn()] = true;
+        }
+
+        // Diagonal inferior direita
+        p.setValues(position.getRow() + 1, position.getColumn() + 1);
+        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+            mat[p.getRow()][p.getColumn()] = true;
+            p.setValues(p.getRow() + 1, p.getColumn() + 1);
+        }
+        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+            mat[p.getRow()][p.getColumn()] = true;
+        }
+
+        return mat;
+    }
 }
